@@ -36,8 +36,8 @@ export default function Home() {
 
    return (
       <>
-         <div className="flex justify-center items-center h-screen border-black border-2 h-10">
-            <div className="flex gap-x-10 flex-row justify-center align-middle bg-blue-200 text-white border-black border-2 w-1/2">
+         <div className="flex justify-center items-center h-screen border-black border-2">
+            <div className="flex mt-20 gap-x-10 flex-row justify-center align-middle bg-blue-200 text-white border-black border-2 w-1/2">
                <div className="border-black border-2 m-10 bg-blue-800 w-1/4 min-h-1/4">
                   <BatteryAnimation charge={batteryLevel}/>
                   <h1>You Battery Charge Level is {parseInt(batteryLevel)}%</h1>
