@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-import charging from "../images/Battery.png";
-import notCharging from "../images/Unplug.png";
-import lowBattery from "../images/LowBattery.svg";
-import unknownStatus from "../images/Unknown.svg"
+
 import BatteryAnimation from "./BatteryAnimation/BatteryAnimation";
 export default function Home() {
    const [batteryStatus, setBatteryStatus] = useState(null);
@@ -37,8 +34,8 @@ export default function Home() {
    return (
       <>
          <div className="flex justify-center items-center h-screen border-black border-2">
-            <div className="flex mt-20 gap-x-10 flex-row justify-center align-middle bg-blue-200 text-white border-black border-2 w-1/2">
-               <div className="border-black border-2 m-10 bg-blue-800 w-1/4 min-h-1/4">
+            <div className="flex mt-28 gap-x-10 flex-row justify-center align-middle bg-blue-200 text-white border-black border-2 w-1/2">
+               <div className="border-black border-2 mt-10 bg-blue-800 w-1/4 min-h-1/4">
                   <BatteryAnimation charge={batteryLevel}/>
                   <h1>You Battery Charge Level is {parseInt(batteryLevel)}%</h1>
                </div>

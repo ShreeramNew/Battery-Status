@@ -18,8 +18,15 @@ export default function Alarm() {
       alarm.play();
    };
 
+   let check = () => {
+      let selectedAudio=document.getElementById('alarm_audio')
+      let currentMusic=new Audio(selectedAudio.value);
+      currentMusic.play();
+
+   };
+
    return (
-      <div className="absolute z-30 top-16 left-1/4 w-2/4  border-black border-2 flex">
+      <div className="absolute z-30 top-16 left-1/4 w-2/4 border-black border-2 flex">
          <div className="w-full">
             <div className=" flex h-14 bg-blue-400 p-2 w-full relative">
                <label htmlFor="percentage">Enter the battery Percentage:</label>
@@ -31,19 +38,27 @@ export default function Alarm() {
                   className="border-black border-2 w-20 text-center h-8 absolute right-2"
                />
             </div>
-            <div className="flex p-2 w-full bg-blue-700 relative">
-                <label htmlFor="">Choose Alarm</label>
-                <select className=" mx-auto  w-20 absolute right-2">
-                    <option value="">Audio1</option>
-                    <option value="">Audio1</option>
-                    <option value="">Audio1</option>
-                    <option value="">Audio1</option>
-                </select>
+            <div className="flex p-2 w-full bg-blue-700 h-14 relative">
+               <label htmlFor="">Choose Alarm</label>
+               <button><input className=" invisible" type="file" name="" id="" /> </button>
+               <select
+                  id="alarm_audio"
+                  className=" mx-auto w-24 text-center absolute right-2 outline-none" onChange={check}
+               >
+                  <option className=" w-24" value="audio1">
+                     <div>
+                        <button>Play</button> <br />
+                        uwuwuwuwuuuwuwuwuyhhdhhdhhdhdhdhhdh
+                     </div>
+                  </option>
+                  <option value={audio}>Audio2</option>
+                  <option value="audio3">Audio3</option>
+                  <option value="audio4">Audio4</option>
+               </select>
             </div>
-            <div className="bg-blue-900 flex justify-center">
-                  <button className=" bg-white p-2">Set Alarm</button>
+            <div className="bg-blue-900 flex justify-center p-2">
+               <button className=" bg-white p-2">Set Alarm</button>
             </div>
-
          </div>
       </div>
    );
