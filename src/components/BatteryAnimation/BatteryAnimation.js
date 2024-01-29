@@ -1,8 +1,6 @@
 import React from "react";
 import "../BatteryAnimation/animeStyle.css";
 export default function BatteryAnimation(props) {
-   let k = parseInt(33.33);
-   console.log(k);
    let style = {
       height: `${parseInt(props.charge)}%`,
    };
