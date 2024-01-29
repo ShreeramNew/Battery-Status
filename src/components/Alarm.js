@@ -4,13 +4,14 @@ import audio2 from "../audio/alarm-church-bell-18533.mp3";
 import audio3 from "../audio/attention_tone_sm30-96953.mp3";
 import audio4 from "../audio/din-alarm-european-74887.mp3";
 import audio5 from "../audio/old-mechanic-alarm-clock-140410.mp3";
+import folderIcon from "../images/folderIcon2.png";
 let playingAudios = [];
 
 export default function Alarm() {
    let displayNotification = async () => {
       if ("Notification" in window) {
          let permission = await Notification.requestPermission();
-         if (permission == "granted") {
+         if (permission === "granted") {
             new Notification("Alert", { body: "Your charge is Full" });
             alertUser();
          }
@@ -27,34 +28,37 @@ export default function Alarm() {
             console.log(playingAudios);
             playingAudios.forEach((storedAudio) => {
                storedAudio.pause();
-               playingAudios.splice(playingAudios.indexOf(storedAudio), 1);
             });
+            playingAudios = [];
          }
       };
       handlePause();
+
       let audioOptions = document.getElementById("alarm_audio");
-      if (audioOptions.value === "Custom") {
+      if (audioOptions.value === "custom-audio") {
+         //This will handle choose from device option
          let fileSelector = document.createElement("input");
          fileSelector.type = "file";
-         fileSelector.accept='audio/*'
+         fileSelector.accept = "audio/*";
          fileSelector.click();
          fileSelector.addEventListener("change", () => {
             let selectedFile = fileSelector.files;
-            console.log(selectedFile);
             let fileReader = new FileReader();
             fileReader.onload = () => {
+               //After completion of reading the audio file, it will be played and added to option list
                let audioUrl = fileReader.result;
                let customAudio = new Audio(audioUrl);
                let newOption = document.createElement("option");
                newOption.value = audioUrl;
                newOption.innerHTML = selectedFile[0].name;
-               audioOptions.appendChild(newOption);
+               let lastOption = document.getElementById("custom-audio");
+               audioOptions.insertBefore(newOption, lastOption);
                newOption.selected = true;
                handlePause();
                customAudio.play();
                playingAudios.push(customAudio);
             };
-            fileReader.readAsDataURL(selectedFile[0]);
+            fileReader.readAsDataURL(selectedFile[0]); //It will read the file and convert it into a Base64-encoded representation, that acts as URL to the file (Asynchronusly)
          });
       } else {
          let currentMusic = new Audio(audioOptions.value);
@@ -63,6 +67,11 @@ export default function Alarm() {
       }
    };
 
+   let handleSetAlarm = () => {
+      //Handles the click on 'Set Alarm' Button
+      let selectedPercentage = document.getElementById("percentage").value;
+      let URLOfSelectedAudio = document.getElementById("alarm_audio").value;
+   };
    return (
       <div className="absolute z-30 top-16 left-1/4 w-2/4 border-black border-2 flex">
          <div className="w-full">
@@ -80,7 +89,7 @@ export default function Alarm() {
                <label htmlFor="">Choose Alarm</label>
                <select
                   id="alarm_audio"
-                  className=" mx-auto w-24 text-center absolute right-2 outline-none"
+                  className=" mx-auto w-24 text-center absolute right-2 outline-none bg-sky-950 text-white"
                   onChange={handleSelctedAudio}
                >
                   <option value={audio1}>Bright-phone-ringing</option>
@@ -88,11 +97,16 @@ export default function Alarm() {
                   <option value={audio3}>Attention_tone</option>
                   <option value={audio4}>Din-alarm-european</option>
                   <option value={audio5}>Old-mechanic-alarm</option>
-                  <option value="Custom">Choose from device</option>
+                  <option value="custom-audio" id="custom-audio" className=" text-white font-bold  focus:text-orange-900 ">
+                     Choose from device 
+                  </option>
                </select>
+
             </div>
             <div className="bg-blue-900 flex justify-center p-2">
-               <button className=" bg-white p-2">Set Alarm</button>
+               <button onClick={handleSetAlarm} className=" bg-white p-2">
+                  Set Alarm
+               </button>
             </div>
          </div>
       </div>
