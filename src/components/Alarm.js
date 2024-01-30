@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import audio1 from "../audio/bright-phone-ringing-3-152490.mp3";
 import audio2 from "../audio/alarm-church-bell-18533.mp3";
 import audio3 from "../audio/attention_tone_sm30-96953.mp3";
 import audio4 from "../audio/din-alarm-european-74887.mp3";
 import audio5 from "../audio/old-mechanic-alarm-clock-140410.mp3";
-import folderIcon from "../images/folderIcon2.png";
+import { dataContext } from "../contexts/DataController";
 let playingAudios = [];
 
 export default function Alarm() {
+   let ContextData = useContext(dataContext);
    let displayNotification = async () => {
       if ("Notification" in window) {
          let permission = await Notification.requestPermission();
@@ -71,6 +72,7 @@ export default function Alarm() {
       //Handles the click on 'Set Alarm' Button
       let selectedPercentage = document.getElementById("percentage").value;
       let URLOfSelectedAudio = document.getElementById("alarm_audio").value;
+      ContextData[0](selectedPercentage,URLOfSelectedAudio);
    };
    return (
       <div className="absolute z-30 top-16 left-1/4 w-2/4 border-black border-2 flex">
@@ -97,11 +99,14 @@ export default function Alarm() {
                   <option value={audio3}>Attention_tone</option>
                   <option value={audio4}>Din-alarm-european</option>
                   <option value={audio5}>Old-mechanic-alarm</option>
-                  <option value="custom-audio" id="custom-audio" className=" text-white font-bold  focus:text-orange-900 ">
-                     Choose from device 
+                  <option
+                     value="custom-audio"
+                     id="custom-audio"
+                     className=" text-white font-bold  focus:text-orange-900 "
+                  >
+                     Choose from device
                   </option>
                </select>
-
             </div>
             <div className="bg-blue-900 flex justify-center p-2">
                <button onClick={handleSetAlarm} className=" bg-white p-2">
