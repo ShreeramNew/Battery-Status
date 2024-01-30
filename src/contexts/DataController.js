@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { createContext } from "react";
 
 export const dataContext = createContext();
 export default function DataController(props) {
-   let data = [];
+   const [showSetAlarm, setShowSetAlarm] = useState(false);
+   const savedAlarms = [];
    const recieveUserInput = (percentage, Path) => {
-      console.log(percentage, Path);
+      savedAlarms.push([percentage, Path]);
+      localStorage.setItem("savedAlarms",JSON.stringify(savedAlarms) );   
    };
-   data.push(recieveUserInput);
-   return <dataContext.Provider value={data}>{props.children}</dataContext.Provider>;
+   return (
+      <dataContext.Provider value={[recieveUserInput, showSetAlarm, setShowSetAlarm]}>
+         {props.children}
+      </dataContext.Provider>
+   );
 }
