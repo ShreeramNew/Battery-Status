@@ -1,19 +1,42 @@
 import React, { useContext } from "react";
 import { dataContext } from "../contexts/DataController";
 import EachSavedAlarm from "./EachSavedAlarm";
-import {v4 as uuidv4} from 'uuid';
+
+import defaultAlarm from "../audio/old-mechanic-alarm-clock-140410.mp3";
 
 export default function ShowSavedAlarm() {
    let ContextData = useContext(dataContext);
    let handleClick = () => {
       ContextData[2](true);
    };
-   let savedAlarms = JSON.parse(localStorage.getItem("savedAlarms")).reverse();
+   let savedAlarms = JSON.parse(localStorage.getItem("savedAlarms"))
+   if (savedAlarms) {
+      savedAlarms = JSON.parse(localStorage.getItem("savedAlarms")).reverse()
+   }
+   else{
+       let newAlarm={
+         uniqueId:"a-nhd-ggdgde-23-7374",
+         percentage:93, 
+         audioPath:defaultAlarm,
+         isOn:true,
+      };
+      let savedAlarms = [newAlarm];
+      localStorage.setItem("savedAlarms", JSON.stringify(savedAlarms));
+   }
+
+
    return (
       <div className=" border-black border-2 h-fit max-h-32 mt-10 overflow-y-scroll w-2/4  absolute top-16 left-1/4">
-         {savedAlarms&&savedAlarms.map((SavedAlarm) => {
-            return <EachSavedAlarm key={uuidv4()} uniqueId={uuidv4()} percentage={SavedAlarm[0] } />;
-         })}
+         {savedAlarms &&
+            savedAlarms.map((SavedAlarm) => {
+               return (
+                  <EachSavedAlarm
+                     key={SavedAlarm.uniqueId}
+                     uniqueId={SavedAlarm.uniqueId}
+                     percentage={SavedAlarm.percentage}
+                  />
+               );
+            })}
 
          <div
             onClick={handleClick}
