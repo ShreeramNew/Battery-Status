@@ -82,6 +82,10 @@ export default function Alarm() {
          inputPercentage.focus();
       }
    };
+
+   let handleClose=()=>{
+      ContextData[2](false);
+   }
    return (
       <div className="absolute z-30 top-16 left-1/4 w-2/4 border-black border-2 flex">
          <div className="w-full">
@@ -116,9 +120,12 @@ export default function Alarm() {
                   </option>
                </select>
             </div>
-            <div className="bg-blue-900 flex justify-center p-2">
-               <button onClick={handleSetAlarm} className=" bg-white p-2">
+            <div className="bg-blue-900 flex justify-center gap-4 p-2">
+               <button onClick={handleSetAlarm} className=" bg-white p-2 rounded-full hover:bg-green-200">
                   Set Alarm
+               </button>
+               <button onClick={handleClose} className=" bg-white p-2 rounded-full hover:bg-red-200">
+                  Close
                </button>
             </div>
          </div>
