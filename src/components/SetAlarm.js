@@ -71,14 +71,15 @@ export default function Alarm() {
    let handleSetAlarm = () => {
       //Handles the click on 'Set Alarm' Button
       let inputPercentage = document.getElementById("percentage");
-      if (inputPercentage.value) {
+      if (inputPercentage.value & inputPercentage.value<100 & inputPercentage.value>0 ){
          let selectedPercentage = inputPercentage.value;
          let URLOfSelectedAudio = document.getElementById("alarm_audio").value;
          ContextData[0](selectedPercentage, URLOfSelectedAudio);
          ContextData[2](false);
       }
       else{
-         alert("Please enter battery percentage")
+         alert("Please enter valid battery percentage")
+         inputPercentage.value=null
          inputPercentage.focus();
       }
    };
