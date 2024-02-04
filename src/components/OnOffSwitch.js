@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
 
 export default function OnOffSwitch(props) {
+   //Modifying the uniqueID so that it can be used for class name and also as id for label 
    let classNameForRound = props.uniqueId.replace(props.uniqueId[0], "a");
    let idForLabel = props.uniqueId
       .replace(props.uniqueId[0], "b")
       .replace(props.uniqueId[4], "unique");
+   
    let savedAlarms = JSON.parse(localStorage.getItem("savedAlarms"));
-   useEffect(() => {
-      updateSwitch();
-   }, []);
 
-   let updateSwitch = () => {
+   useEffect(() => {
+      //This is useful to keep switch on or off according 'isOn' of that alarm
       savedAlarms.forEach((alarm) => {
          let round = document.querySelector(`.${classNameForRound}`);
          if (alarm.uniqueId === props.uniqueId) {
@@ -21,7 +21,7 @@ export default function OnOffSwitch(props) {
                : "grey";
          }
       });
-   };
+   }, []); 
 
    let handleCheckBox = (e) => {
       let round = document.querySelector(`.${classNameForRound}`);
@@ -30,14 +30,13 @@ export default function OnOffSwitch(props) {
          ? "green"
          : "grey";
 
-      //Sync the OnOffSwitch with 'isOn' of that alarm in localStorage
+      //update 'isOn' of alarm, when checkbox value changes
       let savedAlarms = JSON.parse(localStorage.getItem("savedAlarms"));
       savedAlarms.forEach((alarm) => {
          if (alarm.uniqueId === props.uniqueId) {
             alarm.isOn = e.target.checked;
          }
       });
-      console.log("I have succefully updated sync:", savedAlarms);
       localStorage.setItem("savedAlarms", JSON.stringify(savedAlarms));
    };
 

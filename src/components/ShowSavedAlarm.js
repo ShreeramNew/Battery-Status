@@ -5,21 +5,24 @@ import defaultAlarm from "../audio/old-mechanic-alarm-clock-140410.mp3";
 
 export default function ShowSavedAlarm() {
    let ContextData = useContext(dataContext);
+
    let handlePlusSignClick = () => {
       ContextData.setShowSetAlarm(true);
    };
+   
    let savedAlarms = JSON.parse(localStorage.getItem("savedAlarms"))
    if (savedAlarms) {
       savedAlarms = JSON.parse(localStorage.getItem("savedAlarms")).reverse()
    }
    else{
+      //If savedAlarms is empty, create a default alarm
        let newAlarm={
          uniqueId:"a-nhd-ggdgde-23-7374",
          percentage:93, 
          audioPath:defaultAlarm,
          isOn:true,
       };
-      let savedAlarms = [newAlarm];
+      savedAlarms = [newAlarm];
       localStorage.setItem("savedAlarms", JSON.stringify(savedAlarms));
    }
 

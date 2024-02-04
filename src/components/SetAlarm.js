@@ -9,19 +9,7 @@ let playingAudios = [];
 
 export default function Alarm() {
    let ContextData = useContext(dataContext);
-   let displayNotification = async () => {
-      if ("Notification" in window) {
-         let permission = await Notification.requestPermission();
-         if (permission === "granted") {
-            new Notification("Alert", { body: "Your charge is Full" });
-            alertUser();
-         }
-      } else {
-         console.log("Notification not supported");
-      }
-   };
-   let alertUser = () => {};
-
+   
    let handleSelctedAudio = () => {
       let handlePause = () => {
          //This will pause and remove all the audios previously selected
@@ -34,6 +22,7 @@ export default function Alarm() {
          }
       };
       handlePause();
+
 
       let audioOptions = document.getElementById("alarm_audio");
       if (audioOptions.value === "custom-audio") {

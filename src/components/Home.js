@@ -5,6 +5,7 @@ export default function Home() {
    const [batteryStatus, setBatteryStatus] = useState(null);
    const [batteryIsCharging, setBatteryIsCharging] = useState(false);
    const [batteryLevel, setBatteryLevel] = useState(50);
+   let playingAudios = [];
 
    //Fetch current battery state
    let fetchBatteryStatus = async () => {
@@ -31,15 +32,58 @@ export default function Home() {
       setBatteryStatus(batteryIsCharging ? "Charging" : "Not Charging");
    }, [batteryIsCharging]);
 
+   let pauseAllAudio = () => {
+      //This will pause all previously playing audio and removes them from playingAudios array 
+      if (playingAudios) {
+         playingAudios.forEach((audio) => {
+            audio.pause();
+         });
+         playingAudios = [];
+      }
+   };
+
+   let displayNotification = async () => {
+      if ("Notification" in window) {
+         let permission = await Notification.requestPermission();
+         if (permission === "granted") {
+            new Notification("Alert", { body: `Your charge reached ${batteryLevel}` });
+         }
+      } else {
+         console.log("Notification not supported");
+      }
+   };
+
+
+   useEffect(() => {
+      let savedAlarms = JSON.parse(localStorage.getItem("savedAlarms"));
+      pauseAllAudio();
+      savedAlarms.forEach((alarm) => {
+         if (alarm.isOn && parseInt(alarm.percentage) === parseInt(batteryLevel)) {
+            let alarmAudio = new Audio(alarm.audioPath);
+            playingAudios.push(alarmAudio);
+            document.getElementById("dummyButton").click();
+         }
+      });
+   }, [batteryLevel]);
+
+   let handleDummyButton = () => {
+      let alarmAudio = playingAudios[playingAudios.length - 1];
+      alarmAudio.play();
+      displayNotification();
+   };
+
+
+
    return (
       <>
          <div className="flex justify-center items-center h-screen border-black border-2">
             <div className="flex mt-28 gap-x-10 flex-row justify-center align-middle bg-blue-200 text-white border-black border-2 w-1/2">
                <div className="border-black border-2 mt-10 bg-blue-800 w-1/4 min-h-1/4">
-                  <BatteryAnimation charge={batteryLevel}/>
+                  <BatteryAnimation charge={batteryLevel} />
                   <h1>You Battery Charge Level is {parseInt(batteryLevel)}%</h1>
                </div>
             </div>
+            <button onClick={handleDummyButton} id="dummyButton" className=" hidden"></button>
          </div>
       </>
    );
