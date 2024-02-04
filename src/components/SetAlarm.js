@@ -9,21 +9,19 @@ let playingAudios = [];
 
 export default function Alarm() {
    let ContextData = useContext(dataContext);
-   
+
+   let handlePause = () => {
+      //This will pause and remove all the audios previously selected
+      if (playingAudios) {
+         console.log(playingAudios);
+         playingAudios.forEach((storedAudio) => {
+            storedAudio.pause();
+         });
+         playingAudios = [];
+      }
+   };
    let handleSelctedAudio = () => {
-      let handlePause = () => {
-         //This will pause and remove all the audios previously selected
-         if (playingAudios) {
-            console.log(playingAudios);
-            playingAudios.forEach((storedAudio) => {
-               storedAudio.pause();
-            });
-            playingAudios = [];
-         }
-      };
       handlePause();
-
-
       let audioOptions = document.getElementById("alarm_audio");
       if (audioOptions.value === "custom-audio") {
          //This will handle choose from device option
@@ -59,23 +57,23 @@ export default function Alarm() {
 
    let handleSetAlarm = () => {
       //Handles the click on 'Set Alarm' Button
+      handlePause();
       let inputPercentage = document.getElementById("percentage");
-      if (inputPercentage.value && inputPercentage.value<100 && inputPercentage.value>0 ){
+      if (inputPercentage.value && inputPercentage.value < 100 && inputPercentage.value > 0) {
          let selectedPercentage = inputPercentage.value;
          let URLOfSelectedAudio = document.getElementById("alarm_audio").value;
          ContextData.recieveUserInput(selectedPercentage, URLOfSelectedAudio);
          ContextData.setShowSetAlarm(false);
-      }
-      else{
-         alert("Please enter valid battery percentage")
-         inputPercentage.value=null
+      } else {
+         alert("Please enter valid battery percentage");
+         inputPercentage.value = null;
          inputPercentage.focus();
       }
    };
 
-   let handleClose=()=>{
+   let handleClose = () => {
       ContextData.setShowSetAlarm(false);
-   }
+   };
    return (
       <div className="absolute z-30 top-16 left-1/4 w-2/4 border-black border-2 flex">
          <div className="w-full">
@@ -111,10 +109,16 @@ export default function Alarm() {
                </select>
             </div>
             <div className="bg-blue-900 flex justify-center gap-4 p-2">
-               <button onClick={handleSetAlarm} className=" bg-white p-2 rounded-full hover:bg-green-200">
+               <button
+                  onClick={handleSetAlarm}
+                  className=" bg-white p-2 rounded-full hover:bg-green-200"
+               >
                   Set Alarm
                </button>
-               <button onClick={handleClose} className=" bg-white p-2 rounded-full hover:bg-red-200">
+               <button
+                  onClick={handleClose}
+                  className=" bg-white p-2 rounded-full hover:bg-red-200"
+               >
                   Close
                </button>
             </div>

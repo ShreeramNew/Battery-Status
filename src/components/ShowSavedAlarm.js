@@ -29,6 +29,7 @@ export default function ShowSavedAlarm() {
    let handleClearAll=()=>{
       localStorage.clear();
    }
+   useEffect(()=>{},[ContextData.reRender])
    
    return (
       <div className=" border-black border-2 h-fit max-h-32 mt-10 overflow-y-scroll w-2/4  absolute top-16 left-1/4">
