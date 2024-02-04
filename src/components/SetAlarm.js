@@ -71,11 +71,11 @@ export default function Alarm() {
    let handleSetAlarm = () => {
       //Handles the click on 'Set Alarm' Button
       let inputPercentage = document.getElementById("percentage");
-      if (inputPercentage.value & inputPercentage.value<100 & inputPercentage.value>0 ){
+      if (inputPercentage.value && inputPercentage.value<100 && inputPercentage.value>0 ){
          let selectedPercentage = inputPercentage.value;
          let URLOfSelectedAudio = document.getElementById("alarm_audio").value;
-         ContextData[0](selectedPercentage, URLOfSelectedAudio);
-         ContextData[2](false);
+         ContextData.recieveUserInput(selectedPercentage, URLOfSelectedAudio);
+         ContextData.setShowSetAlarm(false);
       }
       else{
          alert("Please enter valid battery percentage")
@@ -85,7 +85,7 @@ export default function Alarm() {
    };
 
    let handleClose=()=>{
-      ContextData[2](false);
+      ContextData.setShowSetAlarm(false);
    }
    return (
       <div className="absolute z-30 top-16 left-1/4 w-2/4 border-black border-2 flex">

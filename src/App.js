@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <Home/>
-      {ContextData[1]&&<Alarm/>}
+      {ContextData.showSetAlarm&&<Alarm/>}
       <ShowSavedAlarm/>
       {/* <OnOffSwitch/> */}
     </>

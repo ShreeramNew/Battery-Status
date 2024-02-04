@@ -12,9 +12,9 @@ export default function EachSavedAlarm(props) {
       setShowEditAndDelete(height === 20 ? true : false);
    }, [height]);
 
-   let handleEdit=()=>{
-      alert("Hello")
-   }
+   let handleEdit = () => {
+      alert("Hello");
+   };
    return (
       <div
          onClick={handleClick}
@@ -23,7 +23,12 @@ export default function EachSavedAlarm(props) {
          <div className="ml-5 mt-2 text-xl text-white absolute top-1">{props.percentage}%</div>
          <OnOffSwitch uniqueId={props.uniqueId} />
          {showEditandDelete && (
-            <img onClick={handleEdit} src={editIcon} alt="Edit" className="w-6 h-6 absolute left-2 bottom-1 hover:scale-105"></img>
+            <img
+               onClick={handleEdit}
+               src={editIcon}
+               alt="Edit"
+               className="w-6 h-6 absolute left-2 bottom-1 hover:scale-105"
+            ></img>
          )}
       </div>
    );
