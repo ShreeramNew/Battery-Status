@@ -28,6 +28,7 @@ export default function ShowSavedAlarm() {
 
    let handleClearAll=()=>{
       localStorage.clear();
+      ContextData.setReRender(prevValue=>prevValue+1)
    }
    useEffect(()=>{},[ContextData.reRender])
    
