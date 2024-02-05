@@ -4,6 +4,7 @@ import audio2 from "../audio/alarm-church-bell-18533.mp3";
 import audio3 from "../audio/attention_tone_sm30-96953.mp3";
 import audio4 from "../audio/din-alarm-european-74887.mp3";
 import audio5 from "../audio/old-mechanic-alarm-clock-140410.mp3";
+import "../responsive.css"
 import { dataContext } from "../contexts/DataController";
 let playingAudios = [];
 
@@ -77,7 +78,7 @@ export default function Alarm() {
       ContextData.setShowSavedAlarm(true);
    };
    return (
-      <div className="absolute z-30 top-16 left-1/4 w-2/4 border-black border-2 flex">
+      <div className="absolute z-30 top-16 left-1/4 w-2/4 border-black border-2 flex setAlarmContainer">
          <div className="w-full">
             <div className=" flex h-14 bg-blue-400 p-2 w-full relative">
                <label htmlFor="percentage">Enter the battery Percentage:</label>
@@ -104,7 +105,7 @@ export default function Alarm() {
                   <option
                      value="custom-audio"
                      id="custom-audio"
-                     className=" text-white font-bold  focus:text-orange-900 "
+                     className=" text-white font-bold"
                   >
                      Choose from device
                   </option>

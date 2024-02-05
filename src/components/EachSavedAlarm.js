@@ -44,7 +44,7 @@ export default function EachSavedAlarm(props) {
    return (
       <div
          onClick={handleClick}
-         className={`w-full bg-slate-700 border-2 border-black flex relative items-center rounded-lg mt-1`}
+         className={`w-full bg-slate-900 border-2 border-black flex relative items-center rounded-lg mt-1`}
          style={{"height":`${height}vh`}}
       >
          <div className="ml-5 mt-2 text-xl text-white absolute top-1">{props.percentage}%</div>

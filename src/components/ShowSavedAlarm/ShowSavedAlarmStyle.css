@@ -1,0 +1,9 @@
+.hide-scroll-bar::-webkit-scrollbar {
+   width: 0px;
+}
+@media only screen and (max-width: 700px) {
+  .hide-scroll-bar{
+    width: 90%;
+    left: 5%;
+  }
+ }

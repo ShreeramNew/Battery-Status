@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-
+import "../responsive.css"
 import BatteryAnimation from "./BatteryAnimation/BatteryAnimation";
 export default function Home() {
-   const [batteryStatus, setBatteryStatus] = useState(null);
    const [batteryIsCharging, setBatteryIsCharging] = useState(false);
    const [batteryLevel, setBatteryLevel] = useState(50);
    let playingAudios = [];
@@ -13,6 +12,7 @@ export default function Home() {
       setBatteryIsCharging(battery.charging);
       setBatteryLevel(battery.level * 100);
 
+      console.log(battery.chargingTime/60);
       //Determine wether battery is charging or not
       battery.addEventListener("chargingchange", () => {
          setBatteryIsCharging(battery.charging);
@@ -28,9 +28,6 @@ export default function Home() {
       fetchBatteryStatus();
    }, []);
 
-   useEffect(() => {
-      setBatteryStatus(batteryIsCharging ? "Charging" : "Not Charging");
-   }, [batteryIsCharging]);
 
    let pauseAllAudio = () => {
       //This will pause all previously playing audio and removes them from playingAudios array 
@@ -77,9 +74,9 @@ export default function Home() {
 
    return (
       <>
-         <div className="flex justify-center items-center h-screen ">
-            <div className="flex mt-28 gap-x-10 flex-row justify-center align-middle w-1/2 h-1/3 border-2 border-black">
-                  <BatteryAnimation charge={batteryLevel} />
+         <div className="flex justify-center items-center h-screen bg-gradient-to-br from-blue-950  via-purple-100 via-10% to-blue-950 to-80% ggg" style={{background:'linear-gradient(to bottom right,rgb(13, 4, 64),rgb(112, 93, 160),rgb(1, 1, 65))'}}>
+            <div className="flex mt-28 gap-x-10 flex-row justify-center align-middle w-1/2 h-1/3 border-2 border-black" id="batteryAnimationContainer">
+                  <BatteryAnimation charge={batteryLevel} isCharging={batteryIsCharging} />
             </div>
             <button onClick={handleDummyButton} id="dummyButton" className=" hidden"></button>
          </div>

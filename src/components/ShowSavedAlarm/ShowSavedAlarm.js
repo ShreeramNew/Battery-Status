@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { dataContext } from "../contexts/DataController";
-import EachSavedAlarm from "./EachSavedAlarm";
-import defaultAlarm from "../audio/old-mechanic-alarm-clock-140410.mp3";
-import deleteIcon from "../images/deleteIcon.png";
+import { dataContext } from "../../contexts/DataController";
+import EachSavedAlarm from "../EachSavedAlarm";
+import defaultAlarm from "../../audio/old-mechanic-alarm-clock-140410.mp3";
+import deleteIcon from "../../images/deleteIcon.png"
+import "./ShowSavedAlarmStyle.css"
 
 export default function ShowSavedAlarm() {
    let ContextData = useContext(dataContext);
@@ -45,7 +46,7 @@ export default function ShowSavedAlarm() {
    useEffect(() => {}, [ContextData.reRender]);
 
    return (
-      <div className=" border-black border-2 h-fit min-h-36 max-h-36 mt-10 overflow-y-scroll w-2/4 absolute top-16 left-1/4 rounded-md bg-gray-300">
+      <div className=" border-black border-2 h-fit min-h-36 max-h-36 mt-10 overflow-y-scroll w-2/4 absolute top-16 left-1/4 rounded-md bg-gray-600 hide-scroll-bar p-1">
          {savedAlarms &&
             savedAlarms.map((SavedAlarm) => {
                return (
@@ -66,7 +67,7 @@ export default function ShowSavedAlarm() {
          {showClearAll && (
             <button
                onClick={handleClearAll}
-               className=" border-2 border-black  ml-2 mb-2 p-1 rounded-lg flex gap-2 hover:bg-red-500 hover:text-white"
+               className=" border-2 border-black  ml-2 mb-2 p-1 rounded-lg flex gap-2 hover:bg-red-500 text-white bg-gray-700"
             >
                Clear All <img className="w-6 h-6 rounded-full" alt="clear all" src={deleteIcon}></img>
             </button>
