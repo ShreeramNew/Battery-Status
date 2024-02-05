@@ -55,6 +55,7 @@ export default function Home() {
 
 
    useEffect(() => {
+      //Check wether any saved alarm matches the current battery level
       let savedAlarms = JSON.parse(localStorage.getItem("savedAlarms"));
       pauseAllAudio();
       savedAlarms.forEach((alarm) => {
@@ -76,12 +77,9 @@ export default function Home() {
 
    return (
       <>
-         <div className="flex justify-center items-center h-screen border-black border-2">
-            <div className="flex mt-28 gap-x-10 flex-row justify-center align-middle bg-blue-200 text-white border-black border-2 w-1/2">
-               <div className="border-black border-2 mt-10 bg-blue-800 w-1/4 min-h-1/4">
+         <div className="flex justify-center items-center h-screen ">
+            <div className="flex mt-28 gap-x-10 flex-row justify-center align-middle w-1/2 h-1/3 border-2 border-black">
                   <BatteryAnimation charge={batteryLevel} />
-                  <h1>You Battery Charge Level is {parseInt(batteryLevel)}%</h1>
-               </div>
             </div>
             <button onClick={handleDummyButton} id="dummyButton" className=" hidden"></button>
          </div>

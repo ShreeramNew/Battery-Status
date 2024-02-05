@@ -12,8 +12,7 @@ function App() {
     <>
       <Home/>
       {ContextData.showSetAlarm&&<Alarm/>}
-      <ShowSavedAlarm/>
-      {/* <OnOffSwitch/> */}
+      {ContextData.showSavedAlarm&&<ShowSavedAlarm/>}
     </>
   );
 }

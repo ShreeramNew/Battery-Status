@@ -5,23 +5,30 @@ import deleteIcon from "../images/deleteIcon.png";
 import { dataContext } from "../contexts/DataController";
 
 export default function EachSavedAlarm(props) {
-   const [height, setHeight] = useState(14);
+   const [height, setHeight] = useState(8);
    const [showEditandDelete, setShowEditAndDelete] = useState(false);
    let ContextData = useContext(dataContext);
 
    let handleClick = () => {
-      setHeight((prevHeight) => (prevHeight === 14 ? 20 : 14));
+      setHeight((prevHeight) => {
+         console.log(prevHeight);
+         return prevHeight === 8 ? 11: 8;
+      });
    };
+
    useEffect(() => {
-      setShowEditAndDelete(height === 20 ? true : false);
+      setShowEditAndDelete(height === 11? true : false);
    }, [height]);
 
    let handleEdit = () => {
       ContextData.setEditID(props.uniqueId);
       ContextData.setShowSetAlarm(true);
+      ContextData.setShowSavedAlarm(false);
+
    };
 
    let handleDelete = () => {
+      //Delete perticular alarm
       let confirmation = window.confirm("Are you sure want to delete?");
       if (confirmation) {
          let savedAlarms = JSON.parse(localStorage.getItem("savedAlarms"));
@@ -31,13 +38,14 @@ export default function EachSavedAlarm(props) {
             }
          });
          localStorage.setItem("savedAlarms", JSON.stringify(savedAlarms));
-        ContextData.setReRender(prevValue=>prevValue+1)
+         ContextData.setReRender((prevValue) => prevValue + 1); //Trigger re-render
       }
    };
    return (
       <div
          onClick={handleClick}
-         className={`w-full h-${height} bg-green-800 border-2 border-black flex relative items-center`}
+         className={`w-full bg-slate-700 border-2 border-black flex relative items-center rounded-lg mt-1`}
+         style={{"height":`${height}vh`}}
       >
          <div className="ml-5 mt-2 text-xl text-white absolute top-1">{props.percentage}%</div>
          <OnOffSwitch uniqueId={props.uniqueId} />
