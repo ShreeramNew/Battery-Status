@@ -45,7 +45,7 @@ export default function ShowSavedAlarm() {
    useEffect(() => {}, [ContextData.reRender]);
 
    return (
-      <div className=" border-black border-2 h-fit min-h-40 max-h-40 mt-10 overflow-y-scroll w-2/4 absolute top-16 left-1/4 rounded-md bg-gray-600 hide-scroll-bar p-1">
+      <div className=" hide-scroll-bar absolute left-1/4 top-16 mt-10 h-fit max-h-40 min-h-40 w-2/4 overflow-y-scroll rounded-md border-2 border-black bg-gray-600 p-1">
          {savedAlarms &&
             savedAlarms.map((SavedAlarm) => {
                return (
@@ -59,17 +59,17 @@ export default function ShowSavedAlarm() {
 
          <div
             onClick={handlePlusSignClick}
-            className=" w-8 h-8 rounded-full sticky bg-blue-950 overflow-hidden border-2 bottom-1 m-auto border-black "
+            className=" sticky bottom-1 m-auto size-8 overflow-hidden rounded-full border-2 border-black bg-blue-950 "
          >
-            <h1 className=" text-center text-zinc-50 scale-150 m-0 pb-1">+</h1>
+            <h1 className=" m-0 scale-150 pb-1 text-center text-zinc-50">+</h1>
          </div>
          {showClearAll && (
             <button
                onClick={handleClearAll}
-               className=" border-2 border-black  ml-2 mb-2 p-1 rounded-lg flex gap-2 hover:bg-red-500 text-white bg-gray-700"
+               className=" mb-2 ml-2  flex gap-2 rounded-lg border-2 border-black bg-gray-700 p-1 text-white hover:bg-red-500"
             >
                Clear All{" "}
-               <img className="w-6 h-6 rounded-full" alt="clear all" src={deleteIcon}></img>
+               <img className="size-6 rounded-full" alt="clear all" src={deleteIcon}></img>
             </button>
          )}
       </div>

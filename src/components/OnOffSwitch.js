@@ -21,6 +21,7 @@ export default function OnOffSwitch(props) {
                : "grey";
          }
       });
+   // eslint-disable-next-line react-hooks/exhaustive-deps
    }, []); 
 
    let handleCheckBox = (e) => {
