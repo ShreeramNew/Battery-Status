@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useContext, useEffect, useState } from "react";
 import OnOffSwitch from "./OnOffSwitch";
 import editIcon from "../images/EditShower.svg";
@@ -44,17 +45,17 @@ export default function EachSavedAlarm(props) {
    return (
       <div
          onClick={handleClick}
-         className={`w-full bg-slate-900 border-2 border-black flex relative items-center rounded-lg mt-1`}
+         className={`relative mt-1 flex w-full items-center rounded-lg border-2 border-black bg-slate-900`}
          style={{"height":`${height}vh`}}
       >
-         <div className="ml-5 mt-2 text-xl text-white absolute top-1">{props.percentage}%</div>
+         <div className="absolute top-1 ml-5 mt-2 text-xl text-white">{props.percentage}%</div>
          <OnOffSwitch uniqueId={props.uniqueId} />
          {showEditandDelete && (
             <img
                onClick={handleEdit}
                src={editIcon}
                alt="Edit"
-               className="w-6 h-6 absolute left-2 bottom-1 hover:scale-105"
+               className="absolute bottom-1 left-2 size-6 hover:scale-105"
                title="Edit"
             ></img>
          )}
@@ -63,7 +64,7 @@ export default function EachSavedAlarm(props) {
                onClick={handleDelete}
                src={deleteIcon}
                alt="Edit"
-               className="w-6 h-6 absolute left-10 bottom-1 hover:scale-105 rounded-full"
+               className="absolute bottom-1 left-10 size-6 rounded-full hover:scale-105"
                title="Delete"
             ></img>
          )}

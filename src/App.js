@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { useContext } from "react";
 import Alarm from "./components/SetAlarm";
 import Home from "./components/Home";
