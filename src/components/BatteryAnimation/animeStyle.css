@@ -11,7 +11,7 @@
    position: relative;
    margin-top: 10px;
    overflow: hidden;
-   background-color: white;
+   background-color: rgb(210, 190, 190);
    border-radius: 6px;
    box-shadow: 0 3px 2px black;
 }
@@ -34,7 +34,7 @@
    width: 10%;
    height: 10px;
    top: -3px;
-   background-color: white;
+   background-color: rgb(210, 190, 190);
    border-radius: 6px;
 }
 
@@ -54,15 +54,9 @@
 }
 .charge3 {
    left:-50px;
-   /* animation: float3 1s infinite linear alternate; */
-   /* background-color: red; */
    border: 2px ;
-   /* border-radius:10px; */
    bottom: -4px;
-   /* width: 100%; */
    left: -5%;
-   /* transform:rotate(15deg); */
-
 }
 .charging{
     height: 40px;

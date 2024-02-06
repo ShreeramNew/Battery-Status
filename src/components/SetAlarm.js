@@ -76,25 +76,26 @@ export default function Alarm() {
    let handleClose = () => {
       ContextData.setShowSetAlarm(false);
       ContextData.setShowSavedAlarm(true);
+      handlePause();
    };
    return (
-      <div className="absolute z-30 top-16 left-1/4 w-2/4 border-black border-2 flex setAlarmContainer">
+      <div className="absolute z-30 top-16 left-1/4 w-2/4 border-black border-2 flex setAlarmContainer rounded-xl overflow-hidden">
          <div className="w-full">
-            <div className=" flex h-14 bg-blue-400 p-2 w-full relative">
+            <div className=" flex h-14 bg-blue-600 text-white p-2 w-full relative">
                <label htmlFor="percentage">Enter the battery Percentage:</label>
                <input
                   type="number"
                   max={100}
                   min={0}
                   id="percentage"
-                  className="border-black border-2 w-20 text-center h-8 absolute right-2"
+                  className="border-black border-2 w-20 text-center h-8 absolute right-2 rounded-md text-black"
                />
             </div>
-            <div className="flex p-2 w-full bg-blue-700 h-14 relative">
+            <div className="flex p-2 w-full bg-blue-700 h-14 relative text-white">
                <label htmlFor="">Choose Alarm</label>
                <select
                   id="alarm_audio"
-                  className=" mx-auto w-24 text-center absolute right-2 outline-none bg-sky-950 text-white"
+                  className=" mx-auto w-24 text-center absolute right-2 outline-none bg-sky-950 text-white rounded-md"
                   onChange={handleSelctedAudio}
                >
                   <option value={audio1}>Bright-phone-ringing</option>

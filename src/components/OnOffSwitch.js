@@ -49,7 +49,7 @@ export default function OnOffSwitch(props) {
             style={{ paddingLeft: "60px", paddingBottom: "30px", borderRadius: "20px" }}
          >
             <div
-               className={`${classNameForRound} border-black border-2 rounded-full absolute bg-white left-0`}
+               className={`${classNameForRound} border-black border-2 rounded-full absolute bg-gray-400 left-0`}
                style={{ width: "26px", height: "26px", transition: "all 0.2s", top: "2px" }}
             ></div>
          </label>
