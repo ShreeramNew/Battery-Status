@@ -62,6 +62,7 @@ export default function Home() {
             document.getElementById("dummyButton").click();
          }
       });
+   // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [batteryLevel]);
 
    let handleDummyButton = () => {
