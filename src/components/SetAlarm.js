@@ -79,23 +79,23 @@ export default function Alarm() {
       handlePause();
    };
    return (
-      <div className="absolute z-30 top-16 left-1/4 w-2/4 border-black border-2 flex setAlarmContainer rounded-xl overflow-hidden">
+      <div className="setAlarmContainer absolute left-1/4 top-16 z-30 flex w-2/4 overflow-hidden rounded-xl border-2 border-black">
          <div className="w-full">
-            <div className=" flex h-14 bg-blue-600 text-white p-2 w-full relative">
+            <div className=" relative flex h-14 w-full bg-blue-600 p-2 text-white">
                <label htmlFor="percentage">Enter the battery Percentage:</label>
                <input
                   type="number"
                   max={100}
                   min={0}
                   id="percentage"
-                  className="border-black border-2 w-20 text-center h-8 absolute right-2 rounded-md text-black"
+                  className="absolute right-2 h-8 w-20 rounded-md border-2 border-black text-center text-black"
                />
             </div>
-            <div className="flex p-2 w-full bg-blue-700 h-14 relative text-white">
+            <div className="relative flex h-14 w-full bg-blue-700 p-2 text-white">
                <label htmlFor="">Choose Alarm</label>
                <select
                   id="alarm_audio"
-                  className=" mx-auto w-24 text-center absolute right-2 outline-none bg-sky-950 text-white rounded-md"
+                  className=" absolute right-2 mx-auto w-24 rounded-md bg-sky-950 text-center text-white outline-none"
                   onChange={handleSelctedAudio}
                >
                   <option value={audio1}>Bright-phone-ringing</option>
@@ -106,22 +106,22 @@ export default function Alarm() {
                   <option
                      value="custom-audio"
                      id="custom-audio"
-                     className=" text-white font-bold"
+                     className=" font-bold text-white"
                   >
                      Choose from device
                   </option>
                </select>
             </div>
-            <div className="bg-blue-900 flex justify-center gap-4 p-2">
+            <div className="flex justify-center gap-4 bg-blue-900 p-2">
                <button
                   onClick={handleSetAlarm}
-                  className=" bg-white p-2 rounded-full hover:bg-green-200"
+                  className=" rounded-full bg-white p-2 hover:bg-green-200"
                >
                   Set Alarm
                </button>
                <button
                   onClick={handleClose}
-                  className=" bg-white p-2 rounded-full hover:bg-red-200"
+                  className=" rounded-full bg-white p-2 hover:bg-red-200"
                >
                   Close
                </button>

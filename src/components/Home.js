@@ -75,8 +75,8 @@ export default function Home() {
 
    return (
       <>
-         <div className="flex justify-center items-center h-screen bg-gradient-to-br from-blue-950  via-purple-100 via-10% to-blue-950 to-80% ggg" style={{background:'linear-gradient(to bottom right,rgb(13, 4, 64),rgb(112, 93, 160),rgb(1, 1, 65))'}}>
-            <div className="flex mt-28 gap-x-10 flex-row justify-center align-middle w-1/2 h-1/3" id="batteryAnimationContainer">
+         <div className="flex h-screen items-center justify-center bg-gradient-to-br  from-blue-950 via-purple-100 via-10% to-blue-950 to-80%" style={{background:'linear-gradient(to bottom right,rgb(13, 4, 64),rgb(112, 93, 160),rgb(1, 1, 65))'}}>
+            <div className="mt-28 flex h-1/3 w-1/2 flex-row justify-center gap-x-10 align-middle" id="batteryAnimationContainer">
                   <BatteryAnimation charge={batteryLevel} isCharging={batteryIsCharging} />
             </div>
             <button onClick={handleDummyButton} id="dummyButton" className=" hidden"></button>

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect } from "react";
 import "../BatteryAnimation/animeStyle.css";
 import chargingIcon from "../../images/Charging.png";
@@ -12,7 +13,7 @@ export default function BatteryAnimation(props) {
       height: `${parseInt(props.charge)}%`,
    };
    return (
-      <div className="container all-center">
+      <div className="all-center container">
          <div className="battery all-center black-border z-10">
             <h1 id="charge-title">{parseInt(props.charge)}%</h1>
             <img src={chargingIcon} className="charging" alt="charging" />

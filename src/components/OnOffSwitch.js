@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect } from "react";
 
 export default function OnOffSwitch(props) {
@@ -46,11 +47,11 @@ export default function OnOffSwitch(props) {
          <label
             htmlFor={props.uniqueId}
             id={idForLabel}
-            className="absolute top-0.5 left-0.5 bg-gray-500 border-black border-2"
+            className="absolute left-0.5 top-0.5 border-2 border-black bg-gray-500"
             style={{ paddingLeft: "60px", paddingBottom: "30px", borderRadius: "20px" }}
          >
             <div
-               className={`${classNameForRound} border-black border-2 rounded-full absolute bg-gray-400 left-0`}
+               className={`${classNameForRound} absolute left-0 rounded-full border-2 border-black bg-gray-400`}
                style={{ width: "26px", height: "26px", transition: "all 0.2s", top: "2px" }}
             ></div>
          </label>
