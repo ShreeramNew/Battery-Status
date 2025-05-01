@@ -30,6 +30,7 @@ export default function DataController(props) {
             audioPath: Path,
             isOn: true,
          };
+         // console.log(newAlarm);
          savedAlarms.push(newAlarm);
          localStorage.setItem("savedAlarms", JSON.stringify(savedAlarms));
          console.log(JSON.parse(localStorage.getItem("savedAlarms")));

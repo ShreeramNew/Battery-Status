@@ -2,12 +2,12 @@
 import React, { useEffect } from "react";
 
 export default function OnOffSwitch(props) {
-   //Modifying the uniqueID so that it can be used for class name and also as id for label 
+   //Modifying the uniqueID so that it can be used for class name and also as id for label
    let classNameForRound = props.uniqueId.replace(props.uniqueId[0], "a");
    let idForLabel = props.uniqueId
       .replace(props.uniqueId[0], "b")
       .replace(props.uniqueId[4], "unique");
-   
+
    let savedAlarms = JSON.parse(localStorage.getItem("savedAlarms"));
 
    useEffect(() => {
@@ -22,8 +22,8 @@ export default function OnOffSwitch(props) {
                : "grey";
          }
       });
-   // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, []); 
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, []);
 
    let handleCheckBox = (e) => {
       let round = document.querySelector(`.${classNameForRound}`);
@@ -43,12 +43,11 @@ export default function OnOffSwitch(props) {
    };
 
    return (
-      <div className=" absolute right-20 top-1">
+      <div className=" relative">
          <label
             htmlFor={props.uniqueId}
             id={idForLabel}
-            className="absolute left-0.5 top-0.5 border-2 border-black bg-gray-500"
-            style={{ paddingLeft: "60px", paddingBottom: "30px", borderRadius: "20px" }}
+            className="relative border-2 border-black bg-gray-500 w-[rem] h-fit rounded-[10rem]"
          >
             <div
                className={`${classNameForRound} absolute left-0 rounded-full border-2 border-black bg-gray-400`}

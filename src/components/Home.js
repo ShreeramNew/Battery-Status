@@ -1,7 +1,13 @@
+import { useContext } from "react";
+import ShowSavedAlarm from "../components/ShowSavedAlarm/ShowSavedAlarm";
+import { dataContext } from "../contexts/DataController";
+import Alarm from "../components/SetAlarm";
+
 import React, { useEffect, useState } from "react";
-import "../responsive.css"
+import "../responsive.css";
 import BatteryAnimation from "./BatteryAnimation/BatteryAnimation";
 export default function Home() {
+   let ContextData = useContext(dataContext);
    const [batteryIsCharging, setBatteryIsCharging] = useState(false);
    const [batteryLevel, setBatteryLevel] = useState(50);
    let playingAudios = [];
@@ -11,8 +17,6 @@ export default function Home() {
       let battery = await navigator.getBattery();
       setBatteryIsCharging(battery.charging);
       setBatteryLevel(battery.level * 100);
-
-      console.log(battery.chargingTime/60);
       //Determine wether battery is charging or not
       battery.addEventListener("chargingchange", () => {
          setBatteryIsCharging(battery.charging);
@@ -28,9 +32,8 @@ export default function Home() {
       fetchBatteryStatus();
    }, []);
 
-
    let pauseAllAudio = () => {
-      //This will pause all previously playing audio and removes them from playingAudios array 
+      //This will pause all previously playing audio and removes them from playingAudios array
       if (playingAudios) {
          playingAudios.forEach((audio) => {
             audio.pause();
@@ -50,7 +53,6 @@ export default function Home() {
       }
    };
 
-
    useEffect(() => {
       //Check wether any saved alarm matches the current battery level
       let savedAlarms = JSON.parse(localStorage.getItem("savedAlarms"));
@@ -62,7 +64,7 @@ export default function Home() {
             document.getElementById("dummyButton").click();
          }
       });
-   // eslint-disable-next-line react-hooks/exhaustive-deps
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [batteryLevel]);
 
    let handleDummyButton = () => {
@@ -71,16 +73,19 @@ export default function Home() {
       displayNotification();
    };
 
-
-
    return (
-      <>
-         <div className="flex h-screen items-center justify-center bg-gradient-to-br  from-blue-950 via-purple-100 via-10% to-blue-950 to-80%" style={{background:'linear-gradient(to bottom right,rgb(13, 4, 64),rgb(112, 93, 160),rgb(1, 1, 65))'}}>
-            <div className="mt-28 flex h-1/3 w-1/2 flex-row justify-center gap-x-10 align-middle" id="batteryAnimationContainer">
-                  <BatteryAnimation charge={batteryLevel} isCharging={batteryIsCharging} />
+      <div className=" w-full min-h-screen flex justify-center items-center bg-gradient-to-br  from-gray-950 via-gray-800  to-gray-950 ">
+         <div className=" max-w-[23rem] md:max-w-[40rem] ipadMini:max-w-[60rem] ipad-air-portrait:max-w-[45rem] ipad-air:max-w-[70rem] lg:max-w-[78rem] mx-auto flex justify-between items-center gap-[10rem] border-">
+            <ShowSavedAlarm />
+            <div
+               className=" w-fit mt-28 flex h-fit flex-row justify-center gap-x-10 align-middle border-"
+               id="batteryAnimationContainer"
+            >
+               <BatteryAnimation charge={batteryLevel} isCharging={batteryIsCharging} />
             </div>
             <button onClick={handleDummyButton} id="dummyButton" className=" hidden"></button>
          </div>
-      </>
+         {ContextData.showSetAlarm && <Alarm />}
+      </div>
    );
 }
