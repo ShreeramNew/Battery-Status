@@ -78,7 +78,7 @@ export default function Home() {
          <div className=" max-w-[23rem] md:max-w-[40rem] ipadMini:max-w-[60rem] ipad-air-portrait:max-w-[45rem] ipad-air:max-w-[70rem] lg:max-w-[78rem] mx-auto flex justify-between items-center gap-[10rem] border-">
             <ShowSavedAlarm />
             <div
-               className=" w-fit mt-28 flex h-fit flex-row justify-center gap-x-10 align-middle border-"
+               className=" w-fit flex h-fit flex-row justify-center gap-x-10 align-middle border-"
                id="batteryAnimationContainer"
             >
                <BatteryAnimation charge={batteryLevel} isCharging={batteryIsCharging} />

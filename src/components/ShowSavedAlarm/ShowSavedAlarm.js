@@ -31,7 +31,7 @@ export default function ShowSavedAlarm() {
    }
 
    useEffect(() => {
-      if (savedAlarms && savedAlarms.length > 1) {
+      if (savedAlarms && savedAlarms.length > 0) {
          setShowClearAll(true);
       } else {
          setShowClearAll(false);
@@ -46,33 +46,37 @@ export default function ShowSavedAlarm() {
    useEffect(() => {}, [ContextData.reRender]);
 
    return (
-      <div className=" w-[23rem] md:min-w-[40rem] lg:min-w-[50rem] hide-scroll-bar  h-fit max-h-40 min-h-40 overflow-y-scroll rounded-md border-2 border-black bg-gray-600 p-1">
-         {savedAlarms &&
-            savedAlarms.map((SavedAlarm) => {
-               return (
-                  <EachSavedAlarm
-                     key={SavedAlarm.uniqueId}
-                     uniqueId={SavedAlarm.uniqueId}
-                     percentage={SavedAlarm.percentage}
-                     isOn={SavedAlarm.isOn}
-                  />
-               );
-            })}
-
-         <div
-            onClick={handlePlusSignClick}
-            className=" sticky bottom-1 m-auto size-8 overflow-hidden rounded-full border-2 border-black bg-blue-950 cursor-pointer "
-         >
-            <h1 className=" m-0 scale-150 pb-1 text-center text-zinc-50">+</h1>
+      <div className=" flex flex-col justify-start items-start relative border- border-red-900 ">
+         <div className=" text-xl text-gray-300 font-medium my-[1rem]">Saved Alarms</div>
+         <div className=" w-[23rem] md:min-w-[40rem] lg:min-w-[50rem] hide-scroll-bar  h-[15rem] overflow-y-scroll rounded-md border-2 border-black bg-gray-600 p-1 ">
+            {savedAlarms &&
+               savedAlarms.map((SavedAlarm) => {
+                  return (
+                     <EachSavedAlarm
+                        key={SavedAlarm.uniqueId}
+                        uniqueId={SavedAlarm.uniqueId}
+                        percentage={SavedAlarm.percentage}
+                        isOn={SavedAlarm.isOn}
+                     />
+                  );
+               })}
          </div>
-         {showClearAll && (
-            <button
-               onClick={handleClearAll}
-               className=" mb-2 ml-2 ju  flex gap-1 justify-center items-center rounded-lg border-[1px] border-black bg-gray-700 p-1 text-white hover:bg-red-600 px-[1rem]"
+         <div className=" absolute bottom-[-3rem] w-full border- b flex gap-[1rem] justify-center items-center ">
+            <div
+               onClick={handlePlusSignClick}
+               className="overflow-hidden rounded-lg border-[1px] border-black bg-blue-950 cursor-pointer w-[8rem] h-[2.3rem] flex justify-center items-center "
             >
-               Clear All <MdDelete size={20} />
-            </button>
-         )}
+               <div className=" m-0 pb-1 text-center text-zinc-50">Add Alarm</div>
+            </div>
+            {showClearAll && (
+               <button
+                  onClick={handleClearAll}
+                  className=" flex gap-1 justify-center items-center rounded-lg border-[1px] border-black bg-gray-700 p-1 text-white hover:bg-red-600 h-[2.3rem] w-[8rem]"
+               >
+                  Clear All <MdDelete size={20} />
+               </button>
+            )}
+         </div>
       </div>
    );
 }
