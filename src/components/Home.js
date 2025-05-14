@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/no-contradicting-classname */
 import "../responsive.css";
 import { useContext } from "react";
 import Alarm from "../components/SetAlarm";
@@ -78,7 +79,7 @@ export default function Home() {
 
    return (
       <div className=" w-full min-h-screen flex justify-center items-center bg-gradient-to-br  from-gray-950 via-gray-800  to-gray-950 ">
-         <div className=" max-w-[23rem] md:max-w-[40rem] ipadMini:max-w-[60rem] ipad-air-portrait:max-w-[45rem] ipad-air:max-w-[70rem] lg:max-w-[78rem] mx-auto flex justify-between items-end gap-[10rem] border-">
+         <div className=" max-w-[23rem] md:max-w-[40rem] ipadMini:max-w-[60rem] ipad-air-portrait:max-w-[45rem] ipad-air:max-w-[70rem] lg:max-w-[78rem] flex-col-reverse flex-col md:flex-row mx-auto flex justify-between items-end gap-[10rem] border-  ">
             <ShowSavedAlarm />
             <div
                className=" w-fit flex h-fit flex-row justify-center gap-x-10 align-middle border-"
