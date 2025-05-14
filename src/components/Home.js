@@ -1,11 +1,11 @@
-import { useContext } from "react";
-import ShowSavedAlarm from "../components/ShowSavedAlarm/ShowSavedAlarm";
-import { dataContext } from "../contexts/DataController";
-import Alarm from "../components/SetAlarm";
-
-import React, { useEffect, useState } from "react";
 import "../responsive.css";
+import { useContext } from "react";
+import Alarm from "../components/SetAlarm";
+import React, { useEffect, useState } from "react";
+import { dataContext } from "../contexts/DataController";
 import BatteryAnimation from "./BatteryAnimation/BatteryAnimation";
+import ShowSavedAlarm from "../components/ShowSavedAlarm/ShowSavedAlarm";
+
 export default function Home() {
    let ContextData = useContext(dataContext);
    const [batteryIsCharging, setBatteryIsCharging] = useState(false);
@@ -57,13 +57,16 @@ export default function Home() {
       //Check wether any saved alarm matches the current battery level
       let savedAlarms = JSON.parse(localStorage.getItem("savedAlarms"));
       pauseAllAudio();
-      savedAlarms.forEach((alarm) => {
-         if (alarm.isOn && parseInt(alarm.percentage) === parseInt(batteryLevel)) {
-            let alarmAudio = new Audio(alarm.audioPath);
-            playingAudios.push(alarmAudio);
-            document.getElementById("dummyButton").click();
-         }
-      });
+      if (savedAlarms) {
+         savedAlarms.forEach((alarm) => {
+            if (alarm.isOn && parseInt(alarm.percentage) === parseInt(batteryLevel)) {
+               let alarmAudio = new Audio(alarm.audioPath);
+               playingAudios.push(alarmAudio);
+               document.getElementById("dummyButton").click();
+            }
+         });
+      }
+
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [batteryLevel]);
 
@@ -75,7 +78,7 @@ export default function Home() {
 
    return (
       <div className=" w-full min-h-screen flex justify-center items-center bg-gradient-to-br  from-gray-950 via-gray-800  to-gray-950 ">
-         <div className=" max-w-[23rem] md:max-w-[40rem] ipadMini:max-w-[60rem] ipad-air-portrait:max-w-[45rem] ipad-air:max-w-[70rem] lg:max-w-[78rem] mx-auto flex justify-between items-center gap-[10rem] border-">
+         <div className=" max-w-[23rem] md:max-w-[40rem] ipadMini:max-w-[60rem] ipad-air-portrait:max-w-[45rem] ipad-air:max-w-[70rem] lg:max-w-[78rem] mx-auto flex justify-between items-end gap-[10rem] border-">
             <ShowSavedAlarm />
             <div
                className=" w-fit flex h-fit flex-row justify-center gap-x-10 align-middle border-"
