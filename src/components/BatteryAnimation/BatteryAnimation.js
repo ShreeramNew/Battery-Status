@@ -6,8 +6,7 @@ export default function BatteryAnimation(props) {
    useEffect(() => {
       document.querySelector(".charging").style.visibility = props.isCharging
          ? "visible"
-         : "hidden"
-         ;
+         : "hidden";
    }, [props.isCharging]);
    let style = {
       height: `${parseInt(props.charge)}%`,

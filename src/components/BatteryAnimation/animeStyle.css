@@ -51,19 +51,18 @@
    animation: float2 2s infinite linear alternate 2s;
 }
 .charge3 {
-   left:-50px;
-   border: 2px ;
+   left: -50px;
+   border: 2px;
    bottom: -4px;
    left: -5%;
 }
-.charging{
-    height: 40px;
-    width: 40px;
-    z-index: 1;
-    position: absolute;
-    bottom:10%;
-    visibility: hidden;
-    
+.charging {
+   height: 40px;
+   width: 40px;
+   z-index: 1;
+   position: absolute;
+   bottom: 10%;
+   visibility: hidden;
 }
 @keyframes float1 {
    0% {
@@ -88,30 +87,29 @@
    }
 }
 @keyframes float3 {
-    0% {
-       transform: rotate(23deg);
-    }
-    50% {
-       transform: rotate(26deg);
-    }
-    100% {
-       transform: rotate(-26deg);
-    }
- }
- @media only screen and (max-width: 700px) {
+   0% {
+      transform: rotate(23deg);
+   }
+   50% {
+      transform: rotate(26deg);
+   }
+   100% {
+      transform: rotate(-26deg);
+   }
+}
+@media only screen and (max-width: 700px) {
    .container {
       width: 90%;
-      height: 100%;
+      height:fit-content;
       margin: 0;
    }
-   .battery{
-      height: 85%;
+   .battery {
+      height: 17rem;
       width: 60%;
    }
-   .top{
-      top:13px;
+   .top {
+      top: -1px;
       width: 40%;
       height: 20px;
    }
-  
 }
