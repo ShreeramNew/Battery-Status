@@ -50,7 +50,7 @@ export default function ShowSavedAlarm() {
    return (
       <div className=" flex flex-col justify-start items-start relative border- border-red-900 w-[23rem] md:w-auto ">
          <div className=" text-xl text-gray-300 font-medium my-[1rem]">Saved Alarms</div>
-         <div className=" min-w-full md:min-w-[40rem] lg:min-w-[50rem] hide-scroll-bar  h-[15rem] overflow-y-scroll rounded-md border-2 border-black bg-gray-600 p-1 ">
+         <div className=" min-w-full ipad-air-portrait:min-w-[40rem] ipad-air:min-w-[30rem] ipad-pro:min-w-[40rem] lg:min-w-[50rem] hide-scroll-bar  h-[15rem] overflow-y-scroll rounded-md border-2 border-black bg-gray-600 p-1 ">
             {savedAlarms &&
                savedAlarms.map((SavedAlarm) => {
                   return (
