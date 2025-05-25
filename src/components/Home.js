@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable tailwindcss/no-contradicting-classname */
 import "../responsive.css";
 import { useContext } from "react";
 import Alarm from "../components/SetAlarm";

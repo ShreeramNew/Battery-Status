@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.ded6ad84.css",
-    "main.js": "/static/js/main.e747e8c7.js",
+    "main.css": "/static/css/main.668c9f1c.css",
+    "main.js": "/static/js/main.8095c80e.js",
     "static/js/787.c23f97fd.chunk.js": "/static/js/787.c23f97fd.chunk.js",
     "static/media/din-alarm-european-74887.mp3": "/static/media/din-alarm-european-74887.eea1cc46449fa4bec334.mp3",
     "static/media/alarm-church-bell-18533.mp3": "/static/media/alarm-church-bell-18533.5372e8ebf7a81b54bffd.mp3",
@@ -9,15 +9,13 @@
     "static/media/bright-phone-ringing-3-152490.mp3": "/static/media/bright-phone-ringing-3-152490.6ec410a28f914bce5149.mp3",
     "static/media/attention_tone_sm30-96953.mp3": "/static/media/attention_tone_sm30-96953.638aedcaa7fe534c5f21.mp3",
     "static/media/Charging.png": "/static/media/Charging.ba3f7dcfd6eaa4016a84.png",
-    "static/media/deleteIcon.png": "/static/media/deleteIcon.6bf98394822ea3af4740.png",
-    "static/media/EditShower.svg": "/static/media/EditShower.2b7bb5e6d5e734c666fc6d6b9a9f7967.svg",
     "index.html": "/index.html",
-    "main.ded6ad84.css.map": "/static/css/main.ded6ad84.css.map",
-    "main.e747e8c7.js.map": "/static/js/main.e747e8c7.js.map",
+    "main.668c9f1c.css.map": "/static/css/main.668c9f1c.css.map",
+    "main.8095c80e.js.map": "/static/js/main.8095c80e.js.map",
     "787.c23f97fd.chunk.js.map": "/static/js/787.c23f97fd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ded6ad84.css",
-    "static/js/main.e747e8c7.js"
+    "static/css/main.668c9f1c.css",
+    "static/js/main.8095c80e.js"
   ]
 }
